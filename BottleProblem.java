@@ -1,9 +1,22 @@
 /**
  * 
  * @author Roie Malykin
- *This introductionary Algorithem is revolving around two bottles of water.
- * Let the First bottle volume be an integer "m" Litres , and the other "n"
- * Note!: a bottle with max volume of m, can hold only whole number of Liters (from 0 to m [0,1,2....m-1,m]) 
+ * @Idea: This introductionary algorithem is an example for a proper use of adjacency 2D matrix to find if two nodes are connected.
+ * 		  And also how to think about vectors as indexes.
+ * 
+ * @ The Problem:   
+ * 				Let their be a two bottles of water.
+ * 			    The max volume of the first bottle is noted by "m and the other "n" , while m,n are both integers for expamle (3L,5L)
+ * 				Note!: a bottle with max volume of m, can hold only whole number of Liters (from 0 to m [0,1,2....m-1,m]) 
+ *
+ * 				the problem starts with those two bottles are filled with "aL" and "bL" (  0 <= a <= m , 0<= b <= n)
+ * 				there are 6 operations possible:
+ * 												1) Empty First bottle.
+ * 												2) Empty Second bottle.
+ * 												3) Completely fill the first bottle.
+ * 												4) Completely fill the second bottle.
+ * 												5) Pour water from the first bottle to the second bottle (leaving any reminder of water in the first bottle).
+ * 												6) Pour water from the second bottle to the first bottle (leaving any reminder of water in the second bottle).
  */
 public class BottleProblem 
 {
