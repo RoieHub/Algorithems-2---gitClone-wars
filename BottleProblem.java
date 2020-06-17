@@ -37,12 +37,11 @@ public class BottleProblem
 	}
 	
 	
-	public static boolean[][] BottlesProblem(int m,int n)
+	public static boolean[][] BottlesProblem1(int m,int n)
 	{
 		int size = ( m + 1 ) * ( n + 1 ) ;
 		boolean[][] mat = new boolean[size][size];
-		System.out.println("This is test");
-		//First Method
+		//First Method Nested Loop
 		int k;
 		for( int i = 0 ; i < m+1 ; i++)
 		{
@@ -67,12 +66,40 @@ public class BottleProblem
 		
 	}
 	
+	public static boolean[][] BottlesProblem2(int m,int n)
+	{
+		int size = ( m + 1 ) * ( n + 1 ) ;
+		boolean[][] mat = new boolean[size][size];
+		
+		//Second Method regular loop
+		int i , j;
+				for(int k = 0 ; k < size ; k++)
+				{
+					i = getI(k, n);
+					j = getJ(k,n);
+				// Now all six possiable Steps
+				mat[k][getIndex(0, j, n)] = true; // Throw away all the water from first bottle
+				mat[k][getIndex(i , 0 , n)] = true; // Throw away all the water from the second bottle
+				mat[k][getIndex(m,j,n)] = true; // Fill First bottle 
+				mat[k][getIndex(i, n, n)] = true; // Fill Second bottle
+				/**
+				 * TO pour from one bottle to another we should consider:
+				 * if the second bottle volume is high inuf to contain all the bottle
+				 */
+				mat[k][getIndex(i + j - (Math.min(i + j, n)),Math.min( i + j  , n),n)] = true; // Pour first bottle to second bottle
+				mat[k][getIndex(Math.min( i + j , m),( i + j - Math.min( i + j , m)) , n )] = true; // Pour second bottle to first bottle
+				}
+		
+		return mat;
+		
+	}
+	
 
 	public static void main(String[] args) 
 	{
 		int m = 1 ; // First bottle
 		int n = 2 ; // Second bottle
-		boolean[][] mat = BottlesProblem(m,n);//First Method
+		boolean[][] mat = BottlesProblem2(m,n);//First Method
 
 	}
 
