@@ -64,5 +64,20 @@ public class Floyed_Warshall
 		}
 	}
 	
+	
+	private static void FixPath(String[][] path , int n)
+	{
+		for(int i = 0 ; i < path.length ; i++)
+		{
+			for(int j = 0 ; j < path.length ; i++)
+			{
+				path[i][j] += "->("+BottleProblem.getI(j, n) + " , " + BottleProblem.getJ(j, n)+")";
+			}
+		}
+	}
+	
+	
+	
+	
 
 }
