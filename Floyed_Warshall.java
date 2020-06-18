@@ -76,6 +76,23 @@ public class Floyed_Warshall
 		}
 	}
 	
+	private static String[][] InitPath( int size , boolean[][] mat ,int n)
+	{
+		String[][] path = new String[size][size];
+		for(int i = 0 ; i < path.length ; i++)
+		{
+			for( int j = 0 ; j < path.length ; i++)
+			{
+				if(mat[i][j] = true)
+				{
+					path[i][j] = "(" + BottleProblem.getI(i, n) + " , "+BottleProblem.getJ(i , n)+")";
+				}
+			}
+		}
+		
+		return path;
+	}
+	
 	
 	
 	
