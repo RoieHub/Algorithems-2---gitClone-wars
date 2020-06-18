@@ -6,9 +6,9 @@ public class MyFunctions
 	{
 		int row_size = mat.length;
 		int col_size = mat[0].length;
-		for( int r = 0 ; r <= row_size ; r++)
+		for( int r = 0 ; r < row_size ; r++)
 		{
-			for( int c = 0 ; c <= col_size ; c++)
+			for( int c = 0 ; c < col_size ; c++)
 			{
 				System.out.print(mat[r][c]);
 				System.out.print("  ,  ");
@@ -23,15 +23,15 @@ public class MyFunctions
 	{
 		int row_size = mat.length;
 		int col_size = mat[0].length;
-		for( int r = 0 ; r <= row_size ; r++)
+		for( int r = 0 ; r < row_size ; r++)
 		{
-			for( int c = 0 ; c <= col_size ; c++)
+			for( int c = 0 ; c < col_size ; c++)
 			{
 				System.out.print(mat[r][c]);
 				System.out.print("  ,  ");
 				
 			}
-			System.out.println(); // line down
+			System.out.println(""); // line down
 		}
 		
 	}
