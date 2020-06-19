@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Floyed_Warshall
 {
@@ -22,7 +23,7 @@ public class Floyed_Warshall
 		FixPath(path , n);
 		System.out.println( "Bottle 1 = "+ m +" , Bottle 2 = "+n);
 		
-		IsExist(0,0,0,4,path,n);
+		IsExist(0,0,0,4,mat,path,n);
 		
 		System.out.println("\nAll paths : \n");
 		
@@ -76,6 +77,7 @@ public class Floyed_Warshall
 		}
 	}
 	
+	
 	private static String[][] InitPath( int size , boolean[][] mat ,int n)
 	{
 		String[][] path = new String[size][size];
@@ -92,6 +94,74 @@ public class Floyed_Warshall
 		
 		return path;
 	}
+	
+	public static void IsExist(int i1 , int j1 , int i2 , int j2 , boolean[][] mat , String[][]path , int n)
+	{
+		int i = BottleProblem.getIndex(i1, j1, n);
+		int j = BottleProblem.getIndex(i2, j2, n);
+		System.out.println("Is Exist path from ( "+i1+","+j1+" ) to ( "+i2+","+j2+ " )");
+		if(mat[i][j] == true)
+				System.out.println(path[i][j]);
+		else
+			System.out.println("No path");
+	}
+	
+	/**
+	 * A Simple method to check a graph connectivity , we check in the first vertex is connected to all the other verticies.
+	 * mat[0][0] is not checked! because we dont care.
+	 * @param mat
+	 * @return
+	 */
+	public static boolean isConnected( boolean[][] mat)
+	{
+		for (int i = 1 ; i < mat.length ; i++) // does not check connectivity with itself!
+		{
+			if( mat[0][i] == false)
+				return false;
+		}
+		return true;
+	}
+	
+	public static int NumberOfComponents (boolean[][] mat)
+	{
+		int size = mat.length;
+		ArrayList<Integer> seen = new ArrayList<Integer>();
+		ArrayList<Integer> unSeen = new ArrayList<Integer>();
+		for (int i = 0 ; i < size ; i++) // Put all nodes to "unSeen"
+		{
+			unSeen.add(i);
+		}
+		int counter = 0;
+		while(unSeen.isEmpty() == false)
+		{
+			int vertex = unSeen.get(0);
+			counter++;
+			for( int j = 0 ; j < size ; j++)
+			{
+				if(mat[vertex][j] == true)
+				{
+					seen.add(j);
+				}
+			}
+			unSeen = Substract(unSeen,seen);
+		}
+		
+		return counter;
+	}
+
+	private static ArrayList<Integer> Substract(ArrayList<Integer> unSeen, ArrayList<Integer> seen) 
+	{
+		ArrayList<Integer> ans = new ArrayList<Integer>();
+		for (int i = 0 ; i < unSeen.size() ; i++)
+		{
+			if( seen.contains(unSeen.get(i))== false)
+			{
+				ans.add(unSeen.get(i));
+			}
+		}
+		return ans;
+	}
+	
 	
 	
 	
